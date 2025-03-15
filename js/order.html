@@ -1,0 +1,88 @@
+
+<div class="text-center mx-auto mb-5 wow fadeInUp position-relative" data-wow-delay="0.1s" style="max-width: 600px;">
+    <p class="d-inline-block bg-secondary text-primary py-1 px-4">Our Art</p>
+    <div class="position-relative">
+        <img src="img/Our Work.png" alt="Our Work" class="img-fluid w-100">
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s" onclick="showDetails('Tanqueray Gin', 29.00)">
+        <div class="team-item">
+            <div class="team-img position-relative overflow-hidden">
+                <img class="img-fluid" src="img/team-1.jpg" alt="">
+            </div>
+            <div class="bg-secondary text-center p-4">
+                <h5 class="text-uppercase">Tanqueray Gin</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s" onclick="showDetails('Jagermeister', 35.00)">
+        <div class="team-item">
+            <div class="team-img position-relative overflow-hidden">
+                <img class="img-fluid" src="img/team-2.jpg" alt="">
+            </div>
+            <div class="bg-secondary text-center p-4">
+                <h5 class="text-uppercase">Jagermeister</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s" onclick="showDetails('Bombay Sapphire', 23.00)">
+        <div class="team-item">
+            <div class="team-img position-relative overflow-hidden">
+                <img class="img-fluid" src="img/team-3.jpg" alt="">
+            </div>
+            <div class="bg-secondary text-center p-4">
+                <h5 class="text-uppercase">Bombay Sapphire</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s" onclick="showDetails('Jack Daniels', 19.00)">
+        <div class="team-item">
+            <div class="team-img position-relative overflow-hidden">
+                <img class="img-fluid" src="img/team-4.jpg" alt="">
+            </div>
+            <div class="bg-secondary text-center p-4">
+                <h5 class="text-uppercase">Jack Daniels</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal thông tin đặt hàng -->
+<div id="orderModal" class="modal" style="display: none;">
+    <div class="modal-content bg-dark text-white p-4">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3 id="modal-product-name"></h3>
+        <p id="modal-product-price"></p>
+        <button class="btn btn-success" onclick="confirmOrder()">Xác nhận đặt hàng</button>
+    </div>
+</div>
+
+<script>
+    let selectedProduct = {};
+
+    function showDetails(name, price) {
+        selectedProduct = { name, price };
+        document.getElementById('modal-product-name').innerText = name;
+        document.getElementById('modal-product-price').innerText = "Price: $" + price.toFixed(2);
+        document.getElementById('orderModal').style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById('orderModal').style.display = "none";
+    }
+
+    function confirmOrder() {
+        if (Object.keys(selectedProduct).length === 0) {
+            alert("Vui lòng chọn sản phẩm trước khi đặt hàng!");
+        } else {
+            alert(`Bạn đã đặt hàng thành công: ${selectedProduct.name} với giá $${selectedProduct.price.toFixed(2)}.`);
+            closeModal();
+        }
+    }
+</script>
+
